@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 4427502693226652674}
   - component: {fileID: 2165266769028056399}
   - component: {fileID: 3679470857351779604}
+  - component: {fileID: 4644547635662336265}
   m_Layer: 0
   m_Name: MapChunkGreen01
   m_TagString: Untagged
@@ -454,6 +455,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4644547635662336265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112732491237524940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54cea6d30f51394eb9706f0a4d9ae07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9167612104183668343
 GameObject:
   m_ObjectHideFlags: 0
