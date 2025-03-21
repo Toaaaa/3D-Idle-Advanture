@@ -16,6 +16,6 @@ MonoBehaviour:
   - mapName: Forest
     mapChunkList:
     - {fileID: 9112732491237524940, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-    - {fileID: 9112732491237524940, guid: efb4a7b02cc1a0945b53ea2fe627b3c9, type: 3}
-    - {fileID: 9112732491237524940, guid: d554c7b14f2db2846a19153c1a47428b, type: 3}
-    - {fileID: 9112732491237524940, guid: 98cae04be8b2b194e9a7ca151ea7c724, type: 3}
+    - {fileID: 9112732491237524940, guid: 4b4dfbe8c76ab014eb8e4f31bd425990, type: 3}
+    - {fileID: 9112732491237524940, guid: 300da8ca05aa0d74e99078717c96fb32, type: 3}
+    - {fileID: 9112732491237524940, guid: c3030723c9b948b4eb02674eca135c29, type: 3}

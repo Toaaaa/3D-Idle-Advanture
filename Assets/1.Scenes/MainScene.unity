@@ -1556,17 +1556,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 487261493294782464, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 625308005939137256, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2782757939959890900, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571409872003203801, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3679470857351779604, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
       propertyPath: m_CastShadows
@@ -1616,37 +1612,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5233060800669222575, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073764314031300763, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633041260909135905, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6980276350905371828, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117937887794041885, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 9112732491237524940, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
       propertyPath: m_Name
       value: MapChunkGreen01
       objectReference: {fileID: 0}
     - target: {fileID: 9112732491237524940, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9167612104183668343, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
-      propertyPath: m_Layer
-      value: 6
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
