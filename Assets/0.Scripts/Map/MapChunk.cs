@@ -37,13 +37,10 @@ public class MapChunk : MonoBehaviour
     {
         sceneController.chunkQueue.Enqueue(this.gameObject);
         if(this != sceneController.chunkQueue.Peek())// 청크 큐의 첫번째 청크가 아니라면 뒤틀림 방지 추가 코드.
-        {
             this.transform.position = sceneController.chunkQueue.Peek().transform.position + new Vector3(0, 0, 40);
-        }
+
         if(sceneController.isGameStart && player.isMoving)
-        {
             move = StartCoroutine(MoveChunkToZ());
-        }
     }
     void OnDisable()
     {
@@ -53,7 +50,6 @@ public class MapChunk : MonoBehaviour
     {
         while (sceneController.isGameStart && player.isMoving)
         {
-            Debug.Log("Move Chunk");
             if (transform.position.z < - 40)
             {
                 this.gameObject.SetActive(false);// 청크가 일정 위치 뒤로 이동하면 비활성화.
