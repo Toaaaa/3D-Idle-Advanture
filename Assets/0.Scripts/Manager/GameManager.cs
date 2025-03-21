@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
     public static GameManager Instance;
+
+    public SceneController sceneController;
     public Player player;
 
 
