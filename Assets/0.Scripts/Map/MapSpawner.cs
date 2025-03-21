@@ -8,12 +8,14 @@ public class MapSpawner : MonoBehaviour
 
     [SerializeField] MapDatas mapDatas;// 맵 데이터를 가지고 있는 스크립터블 오브젝트
     [SerializeField] Transform chunkCheckPoint;// 청크 생성 위치를 확인할 위치, 만약 해당 위치에 생성된 청크가 없다면 새로이 청크 배치.
+    int layerMask; // 청크 레이어 마스크.
 
     List<GameObject> chunkList = new List<GameObject>();// 생성된 청크들을 담을 리스트 (오브젝트 풀링)
 
     private void Awake()
     {
         sceneController = GameManager.Instance.sceneController;
+        layerMask = LayerMask.GetMask("Chunk");// 청크 레이어 마스크 == 6번 레이어.
         sceneController.StartGame += SetChunkList;
     }
 
@@ -22,8 +24,9 @@ public class MapSpawner : MonoBehaviour
         Ray ray = new Ray(chunkCheckPoint.position, chunkCheckPoint.up);
         RaycastHit hit;
 
-        if(!Physics.Raycast(ray, out hit, 10))// 청크 생성 위치에 청크가 없다면
+        if(!Physics.Raycast(ray, out hit, 20, layerMask) && sceneController.isGameStart)// 청크 생성 위치에 청크가 없다면
         {
+            Debug.Log("Chunk 없음");
             ChunkPlace();
         }
     }
@@ -42,7 +45,7 @@ public class MapSpawner : MonoBehaviour
                 }
             }
         }
-        InitiateChunk();
+        //InitiateChunk();
     }
     private void InitiateChunk()// 시작시 즉시 배치될 청크 배치.
     {
@@ -87,6 +90,7 @@ public class MapSpawner : MonoBehaviour
             int randomIndex = Random.Range(0, chunkList.Count);
             chunkList[randomIndex].transform.position = chunkCheckPoint.position + new Vector3(0,0,10);// 개선한다면 chunk 데이터의 bounds를 이용하여 청크의 크기를 고려하여 청크 배치의 위치를 조정 가능할듯.
             chunkList[randomIndex].SetActive(true);// 청크 활성화.
+            Debug.Log("Chunk 생성");
         }
     }
 }

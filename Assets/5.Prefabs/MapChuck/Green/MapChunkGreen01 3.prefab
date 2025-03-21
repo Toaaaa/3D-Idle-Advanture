@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 7936531566857276041}
   - component: {fileID: 2451513308792846588}
   - component: {fileID: 6025241754426612235}
-  - component: {fileID: 3571409872003203801}
   m_Layer: 6
   m_Name: Terrain_2 (3)
   m_TagString: Untagged
@@ -366,27 +365,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3571409872003203801
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8117937887794041885}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20.00766, y: 1.7631485, z: 20.002102}
-  m_Center: {x: 0.00095129013, y: 0.827278, z: 0.00021314621}
 --- !u!1 &9112732491237524940
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +378,7 @@ GameObject:
   - component: {fileID: 3679470857351779604}
   - component: {fileID: 4644547635662336265}
   m_Layer: 6
-  m_Name: MapChunkGreen01
+  m_Name: MapChunkGreen01 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +393,7 @@ Transform:
   m_GameObject: {fileID: 9112732491237524940}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 39.75}
+  m_LocalPosition: {x: 0, y: -1, z: 39.999}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

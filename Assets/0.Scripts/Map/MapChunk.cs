@@ -13,7 +13,8 @@ public class MapChunk : MonoBehaviour
 
     private void Update()
     {
-        MoveChunkToZ();
+        if(GameManager.Instance.sceneController.isGameStart)
+            MoveChunkToZ();
     }
     IEnumerator MoveChunkToZ()
     {

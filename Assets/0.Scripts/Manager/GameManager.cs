@@ -6,7 +6,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance;
-    public static GameManager Instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+            }
+            return instance;
+        }
+    }
+
 
     public SceneController sceneController;
     public Player player;

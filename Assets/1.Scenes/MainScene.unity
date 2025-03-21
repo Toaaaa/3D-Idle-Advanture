@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb5a6d4fd6e57342bee7135ffa8875f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapDatas: {fileID: 0}
+  mapDatas: {fileID: 11400000, guid: cab5b5988c7fe964c971b74b7a8da86a, type: 2}
   chunkCheckPoint: {fileID: 1457958980}
 --- !u!4 &1380989469
 Transform:
@@ -542,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 1457958979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 30}
+  m_LocalPosition: {x: 0, y: -1, z: 29.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1556,6 +1556,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 487261493294782464, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 625308005939137256, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2782757939959890900, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1608,9 +1616,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5233060800669222575, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073764314031300763, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633041260909135905, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980276350905371828, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8117937887794041885, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9112732491237524940, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
       propertyPath: m_Name
       value: MapChunkGreen01
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112732491237524940, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167612104183668343, guid: 725c868ea94703d4c84aead32d42ceb5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -18,4 +18,15 @@ public class SceneController : MonoBehaviour
     public Action StartMoving;// 몬스터를 처치 or 게임 시작시 =>> 플레이어를 움직이게 함 + 맵 청크 이동.
     public Action StopMoving;// 플레이어가 움직이는 도중 일정 거리에서 몬스터와 인카운터 시 =>> 플레이어를 멈춤 + 맵 청크 정지 + 전투 시작.
     public Action StartGame;// 플레이 할 스테이지를 고르면 게임이 시작된다 =>> 스테이지 맵 청크 생성및 풀에 저장 + 게임 시작.
+
+    private void Update()
+    {
+        //테스트 코드
+        if(Input.GetKeyDown(KeyCode.Space)&& !isGameStart)
+        {
+            isGameStart = true;
+            StartGame?.Invoke();// 게임 시작.
+            StartMoving?.Invoke();// 플레이어 이동 시작.
+        }
+    }
 }
