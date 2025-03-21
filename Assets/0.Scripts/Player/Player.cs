@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     [Header("Player State")]
     [SerializeField] PlayerState playerState = PlayerState.Idle;
+    public bool isMoving = false;
     enum PlayerState
     {
         Idle,
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour
         while (playerState == PlayerState.Idle)
         {
             anim.SetBool("IsMove", false);
+            isMoving = false;
             yield return null;
         }
     }
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
         while (playerState == PlayerState.Move)
         {
             anim.SetBool("IsMove", true);
+            isMoving = true;
             yield return null;
         }
     }

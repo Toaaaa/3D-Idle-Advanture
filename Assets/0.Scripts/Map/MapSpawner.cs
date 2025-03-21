@@ -26,7 +26,6 @@ public class MapSpawner : MonoBehaviour
 
         if(!Physics.Raycast(ray, out hit, 20, layerMask) && sceneController.isGameStart)// 청크 생성 위치에 청크가 없다면
         {
-            Debug.Log("Chunk 없음");
             ChunkPlace();
         }
     }
@@ -39,13 +38,13 @@ public class MapSpawner : MonoBehaviour
             {
                 foreach(var chunk in mapdatas.mapChunkList)
                 {
-                    Instantiate(chunk, chunkCheckPoint.position, Quaternion.identity);// 청크 생성.
-                    chunkList.Add(chunk);// 생성된 청크를 리스트에 추가.
-                    chunk.SetActive(false);// 생성된 청크를 비활성화.
+                    GameObject newChunk = Instantiate(chunk, new Vector3 (0,0,0), Quaternion.identity);// 청크 생성.
+                    chunkList.Add(newChunk);// 생성된 청크를 리스트에 추가.
+                    newChunk.SetActive(false);// 생성된 청크를 비활성화.
                 }
             }
         }
-        //InitiateChunk();
+        InitiateChunk();
     }
     private void InitiateChunk()// 시작시 즉시 배치될 청크 배치.
     {
@@ -55,10 +54,11 @@ public class MapSpawner : MonoBehaviour
             return;
         }
 
-        chunkList[0].transform.position = new Vector3(0, 0, 0);
+        Debug.Log("Initiate Chunk");
         chunkList[0].SetActive(true);
-        chunkList[1].transform.position = new Vector3(0, 0, 40);// ChunkPlace와 동일하게 추후 Bounds를 활용해 배치 위치 조정.
+        chunkList[0].transform.position = new Vector3(0, 0, 0);
         chunkList[1].SetActive(true);
+        chunkList[1].transform.position = new Vector3(0, 0, 40);// ChunkPlace와 동일하게 추후 Bounds를 활용해 배치 위치 조정.
     }
     private void ChunkPlace()// 청크 배치.
     {
@@ -87,10 +87,15 @@ public class MapSpawner : MonoBehaviour
         }
         else
         {
+            Debug.Log("Chunk Place");
             int randomIndex = Random.Range(0, chunkList.Count);
-            chunkList[randomIndex].transform.position = chunkCheckPoint.position + new Vector3(0,0,10);// 개선한다면 chunk 데이터의 bounds를 이용하여 청크의 크기를 고려하여 청크 배치의 위치를 조정 가능할듯.
+            if (chunkList[randomIndex].activeSelf)// 이미 활성화된 청크라면
+            {
+                ChunkPlace();// 재귀 호출.
+                return;
+            }
+            chunkList[randomIndex].transform.position = new Vector3(chunkCheckPoint.position.x,0, chunkCheckPoint.position.z) + new Vector3(0,0,10);// 개선한다면 chunk 데이터의 bounds를 이용하여 청크의 크기를 고려하여 청크 배치의 위치를 조정 가능할듯.
             chunkList[randomIndex].SetActive(true);// 청크 활성화.
-            Debug.Log("Chunk 생성");
         }
     }
 }
