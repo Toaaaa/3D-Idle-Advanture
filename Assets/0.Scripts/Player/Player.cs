@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
         GameManager.Instance.sceneController.StopMoving += SetCombatState;
     }
 
+    private void Start()
+    {
+        StartCoroutine(StateMachine());// 상태 머신 시작.
+    }
     private void Update()
     {
         //테스트 코드
@@ -53,6 +57,8 @@ public class Player : MonoBehaviour
             ChangeState(PlayerState.Move);
     }
 
+
+    
     private void ChangeState(PlayerState newState)// 플레이어 상태 변경.
     {
         playerState = newState;
@@ -64,5 +70,27 @@ public class Player : MonoBehaviour
     private void SetCombatState()
     {
         ChangeState(PlayerState.Combat);
+    }
+
+    IEnumerator StateMachine()
+    {
+        while (true)
+            yield return StartCoroutine(playerState.ToString());
+    }
+    IEnumerator Idle()
+    {
+        while (playerState == PlayerState.Idle)
+        {
+            anim.SetBool("IsMove", false);
+            yield return null;
+        }
+    }
+    IEnumerator Move()
+    {
+        while (playerState == PlayerState.Move)
+        {
+            anim.SetBool("IsMove", true);
+            yield return null;
+        }
     }
 }
