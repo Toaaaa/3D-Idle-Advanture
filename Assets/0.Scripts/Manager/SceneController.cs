@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
     public MapType selectedMapType = MapType.Forest;// 선택된 맵의 이름 (숲 , 사막)
 
     public bool isGameStart = false;// 게임 시작 여부.
+    public int stageLevel = 1;// 스테이지 레벨.
     public Queue<GameObject> chunkQueue = new Queue<GameObject>();// 이동중인 청크.
     public float chunkMoveSpeed = 5;// 청크 이동 속도.
 
