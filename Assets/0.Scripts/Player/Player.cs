@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
     // 기타 컴포넌트
     Animator anim;
 
+    [Header("Combat")]
+    public Monster targetMonster;// 타겟 몬스터.
+
     private void Awake()
     {
         anim = GetComponent<Animator>();

@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 926163365}
   - component: {fileID: 926163364}
+  - component: {fileID: 926163366}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -287,6 +288,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &926163366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926163363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd4ea78a1710ad4485ba0b903874e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainData: {fileID: 11400000, guid: d69fd325f6ed1a14b945025c15f8e106, type: 2}
+  playerData: {fileID: 11400000, guid: 995cff7a17c8d8245bb6eff809d29cda, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1381257111}
   - component: {fileID: 1381257110}
+  - component: {fileID: 1381257112}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -501,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedMapType: 0
   isGameStart: 0
+  stageLevel: 1
   chunkMoveSpeed: 5
 --- !u!4 &1381257111
 Transform:
@@ -517,6 +534,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381257112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381257109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98db560322be1b408f7e9670561d93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1457958979
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +577,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1517141801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517141802}
+  - component: {fileID: 1517141803}
+  m_Layer: 0
+  m_Name: MonsterDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517141802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517141801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8119067560857243468}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517141803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517141801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2f1228f81a44143b23580198e8c775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8928219421294155255}
 --- !u!1 &1581863518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1517141802}
   - {fileID: 4141916220397493232}
   - {fileID: 5383123911199786200}
   m_Father: {fileID: 0}
@@ -2743,6 +2818,7 @@ MonoBehaviour:
   attack: 10
   playerState: 0
   isMoving: 0
+  targetMonster: {fileID: 0}
 --- !u!1 &9033010173713644661
 GameObject:
   m_ObjectHideFlags: 0

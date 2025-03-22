@@ -23,6 +23,8 @@ public class DataManager : MonoBehaviour
     }
 
     // 골드, 스테이지 레벨, 플레이어 정보 연동.
+    public MainData mainData;
+    public PlayerData playerData;
 
     private void Awake()
     {
@@ -35,5 +37,7 @@ public class DataManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        GameManager.Instance.sceneController.StartGame += mainData.ResetLevel;// 게임 시작시 스테이지 레벨 초기화.
     }
 }
