@@ -54,7 +54,6 @@ public class MapSpawner : MonoBehaviour
             return;
         }
 
-        Debug.Log("Initiate Chunk");
         chunkList[0].SetActive(true);
         chunkList[0].transform.position = new Vector3(0, 0, 0);
         chunkList[1].SetActive(true);
@@ -87,7 +86,6 @@ public class MapSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Chunk Place");
             int randomIndex = Random.Range(0, chunkList.Count);
             if (chunkList[randomIndex].activeSelf)// 이미 활성화된 청크라면
             {
