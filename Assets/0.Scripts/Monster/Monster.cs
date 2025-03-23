@@ -8,6 +8,7 @@ public class Monster : MonoBehaviour
     {
         Idle,
         Attack,
+        Dead,
     }
 
     [Header("Monster Status")]
@@ -45,7 +46,10 @@ public class Monster : MonoBehaviour
     {
         if(curtHp <= 0)
         {
-            // 추후 state 를 dead 로 변경하여 진행하기.
+            // 추후 state 를 dead 로 변경하여 진행하기. (사망시 비활성화도 dead 상태에서 일정시간뒤에 비활성화 처리)
+            this.gameObject.SetActive(false);// 사망시 비활성화.
+            GameManager.Instance.player.targetMonster = null;// 타겟 몬스터 초기화.
+
             GameManager.Instance.sceneController.stageLevel++;
             AddReward();// 보상 추가.
             GameManager.Instance.sceneController.StartMoving?.Invoke();

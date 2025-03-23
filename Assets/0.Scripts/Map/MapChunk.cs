@@ -7,6 +7,7 @@ public class MapChunk : MonoBehaviour
 {
     SceneController sceneController;
     Player player;
+    [SerializeField] Monster monsterInChunk;// 해당 청크에 포함된 몬스터.
     float moveSpeed = 5;
     Coroutine move;
 
@@ -41,6 +42,9 @@ public class MapChunk : MonoBehaviour
 
         if(sceneController.isGameStart && player.isMoving)
             move = StartCoroutine(MoveChunkToZ());
+
+        if(monsterInChunk != null)
+            monsterInChunk.gameObject.SetActive(true);
     }
     void OnDisable()
     {

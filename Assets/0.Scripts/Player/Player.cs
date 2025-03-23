@@ -99,4 +99,13 @@ public class Player : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator Combat()
+    {
+        while (playerState == PlayerState.Combat)
+        {
+            anim.SetBool("IsMove", false);
+            isMoving = false;
+            yield return null;
+        }
+    }
 }
