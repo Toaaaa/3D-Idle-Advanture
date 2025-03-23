@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     public Image hPBar;// 체력바.
     public TextMeshProUGUI hPText;// 체력 텍스트.
     public GameObject reviveFX;// 부활 이펙트.
+    public TextMeshProUGUI damagePrint;// 데미지 출력.
 
 
     private void Awake()
@@ -103,12 +105,20 @@ public class Player : MonoBehaviour
         reviveFX.SetActive(true);
         ChangeState(PlayerState.Combat);
     }
+    private void PrintDamage()
+    {
+        damagePrint.text = atk.ToString();
+        damagePrint.gameObject.SetActive(true);
+        damagePrint.GetComponent<DamageText>().PlayDamageEffect();// 데미지 출력 + 효과 재생.
+    }
+
 
     public void AttackMonster()// 애니메이션 이벤트로 호출.
     {
         if(targetMonster == null)
             return;
         targetMonster.ReceiveDamage(atk);
+        PrintDamage();
     }
     public void ReceiveDamage(int damage)// 몬스터로부터 데미지를 받음.
     {
