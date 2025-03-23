@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -42,6 +44,11 @@ public class Player : MonoBehaviour
     [Header("Combat")]
     public Monster targetMonster;// 타겟 몬스터.
 
+    [Header("UI")]
+    public Image HPBar;// 체력바.
+    public TextMeshProUGUI HPText;// 체력 텍스트.
+
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -51,15 +58,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        UpdateHP();
         StartCoroutine(StateMachine());// 상태 머신 시작.
     }
     private void Update()
     {
         //테스트 코드
         if(Input.GetKeyDown(KeyCode.F1))
-            ChangeState(PlayerState.Idle);
-        if(Input.GetKeyDown(KeyCode.F2))
-            ChangeState(PlayerState.Move);
+            UpdateHP();
     }
 
 
@@ -76,13 +82,27 @@ public class Player : MonoBehaviour
     {
         ChangeState(PlayerState.Combat);
     }// action 이벤트로 호출.
-
+    private void UpdateHP()// 체력 상태 갱신.
+    {
+        HPBar.fillAmount = hp / maxHp;
+        HPText.text = $"{(int)hp} / {(int)maxHp}";
+    }
 
     public void AttackMonster()// 애니메이션 이벤트로 호출.
     {
         if(targetMonster == null)
             return;
         targetMonster.ReceiveDamage(atk);
+    }
+    public void ReceiveDamage(int damage)// 몬스터로부터 데미지를 받음.
+    {
+        hp -= damage;
+        if(hp <= 0)
+        {
+            hp = 0;
+            ChangeState(PlayerState.Dead);
+        }
+        UpdateHP();// 체력 갱신.
     }
 
     IEnumerator StateMachine()
