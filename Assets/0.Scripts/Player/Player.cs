@@ -18,21 +18,22 @@ public class Player : MonoBehaviour
         get => hp;
         set => hp = value;
     }
-    [SerializeField] private float attack = 10;// 공격력.
-    public float Attack
+    [SerializeField] private int atk = 10;// 공격력.
+    public int Atk
     {
-        get => attack;
-        set => attack = value;
+        get => atk;
+        set => atk = value;
     }
 
     [Header("Player State")]
     [SerializeField] PlayerState playerState = PlayerState.Idle;
     public bool isMoving = false;
-    enum PlayerState
+    public enum PlayerState
     {
         Idle,
         Move,
         Combat,
+        Attack,
         Dead
     }
     // 기타 컴포넌트
@@ -63,17 +64,25 @@ public class Player : MonoBehaviour
 
 
     
-    private void ChangeState(PlayerState newState)// 플레이어 상태 변경.
+    public void ChangeState(PlayerState newState)// 플레이어 상태 변경.
     {
         playerState = newState;
     }
     private void SetMoveState()
     {
         ChangeState(PlayerState.Move);
-    }
+    }// action 이벤트로 호출.
     private void SetCombatState()
     {
         ChangeState(PlayerState.Combat);
+    }// action 이벤트로 호출.
+
+
+    public void AttackMonster()// 애니메이션 이벤트로 호출.
+    {
+        if(targetMonster == null)
+            return;
+        targetMonster.ReceiveDamage(atk);
     }
 
     IEnumerator StateMachine()
@@ -83,18 +92,26 @@ public class Player : MonoBehaviour
     }
     IEnumerator Idle()
     {
+        var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
+        
+        if(!curAnimState.IsName("Idle"))
+            anim.Play("Idle",0,0);// Idle 애니메이션 상태 유지.
+
         while (playerState == PlayerState.Idle)
         {
-            anim.SetBool("IsMove", false);
             isMoving = false;
             yield return null;
         }
     }
     IEnumerator Move()
     {
+        var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
+
+        if(!curAnimState.IsName("Move"))
+            anim.Play("Move", 0,0);// Run 애니메이션 상태 유지.
+
         while (playerState == PlayerState.Move)
         {
-            anim.SetBool("IsMove", true);
             isMoving = true;
             yield return null;
         }
@@ -103,9 +120,19 @@ public class Player : MonoBehaviour
     {
         while (playerState == PlayerState.Combat)
         {
-            anim.SetBool("IsMove", false);
             isMoving = false;
+            if(targetMonster != null)
+            {
+                ChangeState(PlayerState.Attack);
+            }
             yield return null;
         }
+    }
+    IEnumerator Attack()
+    {
+        var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
+        anim.Play("Attack",0,0);
+
+        yield return new WaitForSeconds(2f);// 공격 속도.
     }
 }

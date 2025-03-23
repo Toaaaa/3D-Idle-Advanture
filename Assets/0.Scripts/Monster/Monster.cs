@@ -66,4 +66,9 @@ public class Monster : MonoBehaviour
     {
         DataManager.Instance.mainData.gold += curGold;
     }
+
+    public void ReceiveDamage(int dmg)
+    {
+        curtHp -= dmg;
+    }
 }
