@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,9 +45,10 @@ public class Player : MonoBehaviour
     [Header("Combat")]
     public Monster targetMonster;// 타겟 몬스터.
 
-    [Header("UI")]
-    public Image HPBar;// 체력바.
-    public TextMeshProUGUI HPText;// 체력 텍스트.
+    [Header("UI / SFX")]
+    public Image hPBar;// 체력바.
+    public TextMeshProUGUI hPText;// 체력 텍스트.
+    public GameObject reviveFX;// 부활 이펙트.
 
 
     private void Awake()
@@ -66,6 +68,12 @@ public class Player : MonoBehaviour
         //테스트 코드
         if(Input.GetKeyDown(KeyCode.F1))
             UpdateHP();
+
+        if (hp <= 0)
+        {
+            isMoving = false;
+            ChangeState(PlayerState.Dead);
+        }
     }
 
 
@@ -84,8 +92,16 @@ public class Player : MonoBehaviour
     }// action 이벤트로 호출.
     private void UpdateHP()// 체력 상태 갱신.
     {
-        HPBar.fillAmount = hp / maxHp;
-        HPText.text = $"{(int)hp} / {(int)maxHp}";
+        hPBar.fillAmount = hp / maxHp;
+        hPText.text = $"{(int)hp} / {(int)maxHp}";
+    }
+    private void RevivePlayer()// 플레이어 부활.
+    {
+        maxHp = DataManager.Instance.playerData.maxHp;
+        hp = maxHp;
+        reviveFX.SetActive(false);
+        reviveFX.SetActive(true);
+        ChangeState(PlayerState.Combat);
     }
 
     public void AttackMonster()// 애니메이션 이벤트로 호출.
@@ -115,7 +131,7 @@ public class Player : MonoBehaviour
         var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
         
         if(!curAnimState.IsName("Idle"))
-            anim.Play("Idle",0,0);// Idle 애니메이션 상태 유지.
+            anim.Play("Idle",0,0);// Idle 애니메이션 설정.
 
         while (playerState == PlayerState.Idle)
         {
@@ -128,7 +144,7 @@ public class Player : MonoBehaviour
         var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
 
         if(!curAnimState.IsName("Move"))
-            anim.Play("Move", 0,0);// Run 애니메이션 상태 유지.
+            anim.Play("Move", 0,0);// Run 애니메이션 설정.
 
         while (playerState == PlayerState.Move)
         {
@@ -138,12 +154,20 @@ public class Player : MonoBehaviour
     }
     IEnumerator Combat()
     {
+        var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
+        if(!curAnimState.IsName("Combat"))
+            anim.Play("Combat",0,0);// Combat 애니메이션 설정.
+
         while (playerState == PlayerState.Combat)
         {
             isMoving = false;
             if(targetMonster != null)
             {
                 ChangeState(PlayerState.Attack);
+            }
+            else
+            {
+                GameManager.Instance.sceneController.StartMoving?.Invoke();// 이동 시작.
             }
             yield return null;
         }
@@ -154,5 +178,13 @@ public class Player : MonoBehaviour
         anim.Play("Attack",0,0);
 
         yield return new WaitForSeconds(2f);// 공격 속도.
+    }
+    IEnumerator Dead()
+    {
+        var curAnimState = anim.GetCurrentAnimatorStateInfo(0);
+        anim.Play("Dead",0,0);
+
+        yield return new WaitForSeconds(10f);// 10초 후 부활.
+        RevivePlayer();// 부활.
     }
 }
