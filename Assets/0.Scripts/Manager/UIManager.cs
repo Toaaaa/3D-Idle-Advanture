@@ -8,10 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] AudioSource uiSoundSource;
     [SerializeField] ParticleSystem particle;
     [SerializeField] TextMeshProUGUI goldText;
+    [SerializeField] TextMeshProUGUI potionCountText;
 
     private void Awake()
     {
         UpdateGoldDisplay();
+        UpdatePotionCount();
     }
 
     public void ButtonPush(RectTransform buttonrect)
@@ -41,5 +43,16 @@ public class UIManager : MonoBehaviour
     public void UpdateGoldDisplay()
     {
         goldText.text = $"Gold : {DataManager.Instance.mainData.gold.ToString()}";
+    }
+    public void UpdatePotionCount()
+    {
+        potionCountText.text = $"Potion : {DataManager.Instance.mainData.potionCount.ToString()}";
+    }
+
+    public void ExitGameButton()
+    {
+        // 데이터 저장.
+
+        // 게임 종료.
     }
 }

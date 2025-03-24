@@ -7,6 +7,7 @@ using System.Numerics;
 public class MainData : ScriptableObject
 {
     public BigInteger gold;
+    public int potionCount;
     public int stageLevel;
     // 인벤토리 정보
 
