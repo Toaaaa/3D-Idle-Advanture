@@ -46,7 +46,7 @@ public class MapChunk : MonoBehaviour
         if(monsterInChunk != null)
             monsterInChunk.gameObject.SetActive(true);
 
-        StartCoroutine(Wait03TillPeek());
+        //StartCoroutine(Wait03TillPeek());
     }
     void OnDisable()
     {

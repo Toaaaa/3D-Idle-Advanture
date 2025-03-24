@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483322be8bc413647ad083683f7c9440, type: 3}
   m_Name: MainData
   m_EditorClassIdentifier: 
-  gold: 0
-  stageLevel: 0
+  gold: 10
+  potionCount: 0
+  stageLevel: 1

@@ -59,19 +59,18 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         GameManager.Instance.sceneController.StartMoving += SetMoveState;
         GameManager.Instance.sceneController.StopMoving += SetCombatState;
+        GameManager.Instance.uiManager.UpdateUIs += UpdateHP;
     }
 
     private void Start()
     {
+        maxHp = DataManager.Instance.playerData.maxHp;
+        hp = DataManager.Instance.playerData.curHp;
         UpdateHP();
         StartCoroutine(StateMachine());// 상태 머신 시작.
     }
     private void Update()
     {
-        //테스트 코드
-        if(Input.GetKeyDown(KeyCode.F1))
-            UpdateHP();
-
         if (hp <= 0)
         {
             isMoving = false;

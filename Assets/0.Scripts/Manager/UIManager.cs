@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,11 +10,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] ParticleSystem particle;
     [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] TextMeshProUGUI potionCountText;
+    [SerializeField] GameObject playerStatsPanel;
+    [SerializeField] GameObject inventoryPanel;
+    [SerializeField] GameObject shopPanel;
+
+    public Action UpdateUIs;
 
     private void Awake()
     {
-        UpdateGoldDisplay();
-        UpdatePotionCount();
+        UpdateUIs += UpdateGoldDisplay;
+        UpdateUIs += UpdatePotionCount;
+        UpdateUIs?.Invoke();
     }
 
     public void ButtonPush(RectTransform buttonrect)
@@ -42,13 +49,27 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGoldDisplay()
     {
-        goldText.text = $"Gold : {DataManager.Instance.mainData.gold.ToString()}";
+        goldText.text = $"Gold : {DataManager.Instance.mainData.goldValue}";
     }
     public void UpdatePotionCount()
     {
-        potionCountText.text = $"Potion : {DataManager.Instance.mainData.potionCount.ToString()}";
+        potionCountText.text = $"{DataManager.Instance.mainData.potionCount.ToString()}";
     }
-
+    public void OpenPlayerStats()
+    {
+        if(!inventoryPanel.activeSelf && !shopPanel.activeSelf)
+            playerStatsPanel.SetActive(true);
+    }
+    public void OpenInventoryPanel()
+    {
+        if(!playerStatsPanel.activeSelf && !shopPanel.activeSelf)
+            inventoryPanel.SetActive(true);
+    }
+    public void OpenShopPanel()
+    {
+        if(!playerStatsPanel.activeSelf && !inventoryPanel.activeSelf)
+            shopPanel.SetActive(true);
+    }
     public void ExitGameButton()
     {
         // 데이터 저장.

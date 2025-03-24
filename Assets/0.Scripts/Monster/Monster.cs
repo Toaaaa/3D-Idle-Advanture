@@ -65,7 +65,7 @@ public class Monster : MonoBehaviour
     }
     void AddReward()
     {
-        DataManager.Instance.mainData.gold += curGold;
+        DataManager.Instance.mainData.goldValue += curGold;
         GameManager.Instance.uiManager.UpdateGoldDisplay();
     }
     void AttackPlayer()
@@ -79,12 +79,9 @@ public class Monster : MonoBehaviour
 
         if (curHp <= 0)// 사망 판정 체크.
         {
-            Debug.Log("Monster Dead");
             ChangeState(MonsterState.Dead);
-            Debug.Log("Monster Dead");
             GameManager.Instance.player.targetMonster = null;// 타겟 몬스터 초기화.
             GameManager.Instance.sceneController.stageLevel++;
-            AddReward();// 보상 추가.
         }
     }
 
