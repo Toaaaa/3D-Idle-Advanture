@@ -45,6 +45,8 @@ public class MapChunk : MonoBehaviour
 
         if(monsterInChunk != null)
             monsterInChunk.gameObject.SetActive(true);
+
+        StartCoroutine(Wait03TillPeek());
     }
     void OnDisable()
     {
@@ -60,6 +62,14 @@ public class MapChunk : MonoBehaviour
             }
             transform.Translate(Vector3.back * Time.deltaTime * moveSpeed);// moveSpeed 만큼 청크를 뒤로 이동.
             yield return null;
+        }
+    }
+    IEnumerator Wait03TillPeek()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if(sceneController.chunkQueue.Count >= 3)// 청크의 큐 크기가 3이상인 경우, 제일 앞의 청크 비활성화
+        {
+            sceneController.chunkQueue.Peek().SetActive(false);
         }
     }
 }
