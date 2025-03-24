@@ -94,8 +94,12 @@ public class Player : MonoBehaviour
     }// action 이벤트로 호출.
     private void UpdateHP()// 체력 상태 갱신.
     {
+        // UI상의 체력바 갱신
         hPBar.fillAmount = hp / maxHp;
         hPText.text = $"{(int)hp} / {(int)maxHp}";
+        // 데이터 상의 체력 갱신
+        DataManager.Instance.playerData.curHp = (int)hp;
+        DataManager.Instance.playerData.maxHp = (int)maxHp;
     }
     private void RevivePlayer()// 플레이어 부활.
     {
