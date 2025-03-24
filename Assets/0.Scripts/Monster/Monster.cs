@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 public class Monster : MonoBehaviour
 {
@@ -19,10 +20,10 @@ public class Monster : MonoBehaviour
     [Header("Monster Data")]
     [SerializeField] MonsterData monsterData;
     // monsterData 와 스테이지 진행도를 토대로 보정된 최종 수치.
-    int curtHp;
+    BigInteger curHp;
     int curAttack;
     float curAttackSpeed;
-    int curGold;
+    BigInteger curGold;
 
     private void Awake()
     {
@@ -36,15 +37,16 @@ public class Monster : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        curtHp = monsterData.maxHp * GameManager.Instance.sceneController.stageLevel;
+        curHp = monsterData.maxHp * BigInteger.Pow(2, GameManager.Instance.sceneController.stageLevel);
+        curHp /= 2;
         curAttack = monsterData.attack * GameManager.Instance.sceneController.stageLevel;
         curAttackSpeed = monsterData.attackSpeed * GameManager.Instance.sceneController.stageLevel;
-        curGold = monsterData.gold * GameManager.Instance.sceneController.stageLevel;
+        curGold = monsterData.gold * BigInteger.Pow(10, GameManager.Instance.sceneController.stageLevel);
     }// 활성화시 데이터 로드.
 
     private void Update()
     {
-        if(curtHp <= 0)
+        if (curHp <= 0)
         {
             // 추후 state 를 dead 로 변경하여 진행하기. (사망시 비활성화도 dead 상태에서 일정시간뒤에 비활성화 처리)
             this.gameObject.SetActive(false);// 사망시 비활성화.
@@ -58,7 +60,7 @@ public class Monster : MonoBehaviour
         // 테스트 코드
         if(Input.GetKeyDown(KeyCode.A))
         {
-            curtHp -= 10;
+            curHp -= 10;
         }
     }
 
@@ -67,8 +69,8 @@ public class Monster : MonoBehaviour
         DataManager.Instance.mainData.gold += curGold;
     }
 
-    public void ReceiveDamage(int dmg)
+    public void ReceiveDamage(BigInteger dmg)
     {
-        curtHp -= dmg;
+        curHp -= dmg;
     }
 }

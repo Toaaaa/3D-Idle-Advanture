@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Numerics;
 
 public class Player : MonoBehaviour
 {
@@ -22,8 +23,8 @@ public class Player : MonoBehaviour
         get => hp;
         set => hp = value;
     }
-    [SerializeField] private int atk = 10;// 공격력.
-    public int Atk
+    [SerializeField] private BigInteger atk = 10;// 공격력.
+    public BigInteger Atk
     {
         get => atk;
         set => atk = value;
