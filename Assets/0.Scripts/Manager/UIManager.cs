@@ -55,6 +55,26 @@ public class UIManager : MonoBehaviour
     {
         potionCountText.text = $"{DataManager.Instance.mainData.potionCount.ToString()}";
     }
+    public void ChooseForestMap(GameObject thisobj)
+    {
+        GameManager.Instance.sceneController.selectedMapType = SceneController.MapType.Forest;
+        DataManager.Instance.mainData.stageLevel = 1;
+        DataManager.Instance.mainData.currentMapName = "Forest";
+        GameManager.Instance.sceneController.isGameStart = true;
+        thisobj.SetActive(false);
+        GameManager.Instance.sceneController.StartGame?.Invoke();// 게임 시작.
+        GameManager.Instance.sceneController.StartMoving?.Invoke();// 플레이어 이동 시작.
+    }
+    public void ChooseDesertMap(GameObject thisobj)
+    {
+        GameManager.Instance.sceneController.selectedMapType = SceneController.MapType.Desert;
+        DataManager.Instance.mainData.stageLevel = 1;
+        DataManager.Instance.mainData.currentMapName = "Desert";
+        GameManager.Instance.sceneController.isGameStart = true;
+        thisobj.SetActive(false);
+        GameManager.Instance.sceneController.StartGame?.Invoke();// 게임 시작.
+        GameManager.Instance.sceneController.StartMoving?.Invoke();// 플레이어 이동 시작.
+    }
     public void OpenPlayerStats()
     {
         if(!inventoryPanel.activeSelf && !shopPanel.activeSelf)

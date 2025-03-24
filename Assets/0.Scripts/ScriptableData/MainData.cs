@@ -6,6 +6,7 @@ using System.Numerics;
 [CreateAssetMenu(fileName = "MainData", menuName = "ScriptableObjects/MainData")]
 public class MainData : ScriptableObject
 {
+    public string currentMapName = "";//Forest, Desert 택1
     [SerializeField] string gold;
     public BigInteger goldValue
     {

@@ -19,3 +19,15 @@ MonoBehaviour:
     - {fileID: 9112732491237524940, guid: 98badc91364e6324283558a3fa582ab9, type: 3}
     - {fileID: 9112732491237524940, guid: 4c654e53aa593944ca1b8baed40d8207, type: 3}
     - {fileID: 9112732491237524940, guid: 55755424fa5d2cb49b937b983fbe944f, type: 3}
+    - {fileID: 9112732491237524940, guid: ae66293ee5fc42d489f29006f22ddbaa, type: 3}
+    - {fileID: 9112732491237524940, guid: f5e66be509d6988489725dcf312813e1, type: 3}
+    - {fileID: 9112732491237524940, guid: 2f30c57911dce1540b30fe48e17273be, type: 3}
+  - mapName: Desert
+    mapChunkList:
+    - {fileID: 9112732491237524940, guid: 4ea52496b902b544a94ce2ba72d7040f, type: 3}
+    - {fileID: 9112732491237524940, guid: 1a9e055eafa8b3649a06e195427dd034, type: 3}
+    - {fileID: 9112732491237524940, guid: ec8aa21aa7eb6fa478c9634ce9d9303a, type: 3}
+    - {fileID: 9112732491237524940, guid: fffac7a5a71aae94696d989d45435229, type: 3}
+    - {fileID: 9112732491237524940, guid: 8996728ed81757f46bbb2dab92f4e0ad, type: 3}
+    - {fileID: 9112732491237524940, guid: 4aeea4378fc2c5e4e994b524f9183169, type: 3}
+    - {fileID: 9112732491237524940, guid: b9c988d352e3e19488f05b7604e12a69, type: 3}
