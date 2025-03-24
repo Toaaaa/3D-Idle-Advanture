@@ -12,7 +12,7 @@ public class MonsterDetector : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 4, LayerMask.GetMask("Monster")) && player.targetMonster == null)
+        if(Physics.Raycast(ray, out hit, 2.5f, LayerMask.GetMask("Monster")) && player.targetMonster == null)
         {
             OnDetected(hit.collider.GetComponent<Monster>());
         }

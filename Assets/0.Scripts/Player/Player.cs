@@ -174,7 +174,8 @@ public class Player : MonoBehaviour
             isMoving = false;
             if(targetMonster != null)
             {
-                ChangeState(PlayerState.Attack);
+                if(targetMonster.curHp > 0)// 몬스터가 살아있을때만 공격.
+                    ChangeState(PlayerState.Attack);
             }
             else
             {

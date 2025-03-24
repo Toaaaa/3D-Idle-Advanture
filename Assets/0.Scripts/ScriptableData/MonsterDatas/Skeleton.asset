@@ -15,5 +15,5 @@ MonoBehaviour:
   monsterName: Skeleton
   maxHp: 10
   attack: 1
-  attackSpeed: 1
+  attackSpeed: 3
   gold: 2

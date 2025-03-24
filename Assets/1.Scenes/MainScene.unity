@@ -3960,7 +3960,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hp: 100
-  atk: 10
   playerState: 0
   isMoving: 0
   targetMonster: {fileID: 0}
