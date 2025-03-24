@@ -66,6 +66,7 @@ public class Monster : MonoBehaviour
     void AddReward()
     {
         DataManager.Instance.mainData.gold += curGold;
+        GameManager.Instance.uiManager.UpdateGoldDisplay();
     }
     void AttackPlayer()
     {

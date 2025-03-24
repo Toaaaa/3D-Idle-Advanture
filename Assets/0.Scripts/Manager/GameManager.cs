@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public UIManager uiManager;
     public SceneController sceneController;
     public Player player;
 
@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        uiManager = GetComponent<UIManager>();
     }
 
 }

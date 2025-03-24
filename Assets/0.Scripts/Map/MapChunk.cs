@@ -66,7 +66,7 @@ public class MapChunk : MonoBehaviour
     }
     IEnumerator Wait03TillPeek()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         if(sceneController.chunkQueue.Count >= 3)// 청크의 큐 크기가 3이상인 경우, 제일 앞의 청크 비활성화
         {
             sceneController.chunkQueue.Peek().SetActive(false);

@@ -1,36 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    static UIManager instance;
-    public static UIManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<UIManager>();
-            }
-            return instance;
-        }
-    }
-
     [SerializeField] AudioSource uiSoundSource;
     [SerializeField] ParticleSystem particle;
+    [SerializeField] TextMeshProUGUI goldText;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        UpdateGoldDisplay();
     }
 
     public void ButtonPush(RectTransform buttonrect)
@@ -55,6 +36,10 @@ public class UIManager : MonoBehaviour
             effect.Play();
             Destroy(effect.gameObject, effect.main.duration);
         }
+    }
 
+    public void UpdateGoldDisplay()
+    {
+        goldText.text = $"Gold : {DataManager.Instance.mainData.gold.ToString()}";
     }
 }

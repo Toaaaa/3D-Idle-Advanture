@@ -839,6 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiSoundSource: {fileID: 1933361410}
   particle: {fileID: 3125908671876608235, guid: e11e4407cc714ce4caf7d6890c5e8ce0, type: 3}
+  goldText: {fileID: 1596017467}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
