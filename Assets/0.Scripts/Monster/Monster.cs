@@ -45,6 +45,8 @@ public class Monster : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        monsterState = MonsterState.Idle;
+        StartCoroutine(StateMachine());
         curHp = monsterData.maxHp * BigInteger.Pow(2, GameManager.Instance.sceneController.stageLevel);
         curHp /= 2;
         curAttack = monsterData.attack * GameManager.Instance.sceneController.stageLevel;
@@ -68,7 +70,7 @@ public class Monster : MonoBehaviour
     void AttackPlayer()
     {
         GameManager.Instance.player.ReceiveDamage(curAttack);
-        // 시네머신으로 흔들림 구현.
+        Camera.main.GetComponent<CameraAction>().ShakeCamera(0.5f, 0.5f, 10);
     }
     public void ReceiveDamage(BigInteger dmg)
     {
