@@ -37,6 +37,16 @@ public class Inventory : ScriptableObject
         }
     }
 
+    public int GetPotionCount()
+    {
+        var slot = slots.Find(s => s.itemData.itemType == ItemType.Potion);
+        if (slot != null)
+        {
+            return slot.amount;
+        }
+        return 0;
+    }
+
     /*
     public void SaveInventory()
     {
