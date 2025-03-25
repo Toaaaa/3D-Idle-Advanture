@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Numerics;
 
 public class UIManager : MonoBehaviour
 {
@@ -35,13 +36,13 @@ public class UIManager : MonoBehaviour
         uiSoundSource.PlayOneShot(uiSoundSource.clip);
 
         // 버튼의 ui 상의 좌표 > 스크린 좌표 >> 월드 좌표로 변환.
-        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, buttonrect.position);
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane + 5f));
+        UnityEngine.Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, buttonrect.position);
+        UnityEngine.Vector3 worldPos = Camera.main.ScreenToWorldPoint(new UnityEngine.Vector3(screenPos.x, screenPos.y, Camera.main.nearClipPlane + 5f));
 
         // 파티클 생성
         if(particle != null)
         {
-            ParticleSystem effect = Instantiate(particle, worldPos, Quaternion.identity);
+            ParticleSystem effect = Instantiate(particle, worldPos, UnityEngine.Quaternion.identity);
             effect.Play();
             Destroy(effect.gameObject, effect.main.duration);
         }
@@ -49,7 +50,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateGoldDisplay()
     {
-        goldText.text = $"Gold : {DataManager.Instance.mainData.goldValue}";
+        goldText.text = "Gold : " + FormatBigInteger(DataManager.Instance.mainData.goldValue);
     }
     public void UpdatePotionCount()
     {
@@ -96,4 +97,29 @@ public class UIManager : MonoBehaviour
 
         // 게임 종료.
     }
+
+    // BigInteger 변환
+    private string FormatBigInteger(BigInteger value)
+    {
+        if (value < 1000)
+        {
+            return value.ToString();
+        }
+
+        int suffixIndex = 0;
+        BigInteger divisor = new BigInteger(10000);
+
+        while (value >= divisor && suffixIndex < suffixes.Length - 1)
+        {
+            value /= divisor;
+            suffixIndex++;
+        }
+
+        string formattedValue = value.ToString("F2");
+        return $"{formattedValue}{suffixes[suffixIndex]}";
+    }
+    private string[] suffixes =
+    {
+        "","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
+    };
 }

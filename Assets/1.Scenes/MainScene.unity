@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28809217, g: 0.58974653, b: 0.9280837, a: 1}
+  m_IndirectSpecularColor: {r: 0.29367864, g: 0.6168236, b: 0.9683867, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2697,7 +2697,7 @@ GameObject:
   - component: {fileID: 1003213319}
   - component: {fileID: 1003213318}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas-UI Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4391,7 +4391,7 @@ GameObject:
   - component: {fileID: 1606686002}
   - component: {fileID: 1606686001}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas-UI Displaying
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9082,5 +9082,5 @@ SceneRoots:
   - {fileID: 8119067560857243468}
   - {fileID: 1581863522}
   - {fileID: 1606686004}
-  - {fileID: 693517412}
   - {fileID: 1003213321}
+  - {fileID: 693517412}
