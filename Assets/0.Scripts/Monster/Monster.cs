@@ -145,6 +145,7 @@ public class Monster : MonoBehaviour
         GameManager.Instance.player.targetMonster = null;// 타겟 몬스터 초기화.
         GameManager.Instance.sceneController.stageLevel++;
         AddReward();// 보상 추가.
+        DataManager.Instance.mainData.stageLevel++;
         this.gameObject.SetActive(false);
         GameManager.Instance.sceneController.StartMoving?.Invoke();
     }

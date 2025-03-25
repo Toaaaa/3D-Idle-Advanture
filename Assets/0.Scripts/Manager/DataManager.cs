@@ -38,7 +38,5 @@ public class DataManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        GameManager.Instance.sceneController.StartGame += mainData.ResetLevel;// 게임 시작시 스테이지 레벨 초기화.
     }
 }
