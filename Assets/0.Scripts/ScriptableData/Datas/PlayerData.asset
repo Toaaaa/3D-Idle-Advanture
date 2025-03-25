@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHp: 100
-  curHp: 53
-  curatk: 30
-  HpUpgradeCount: 9
-  AtkUpgradeCount: 5
+  curHp: 100
+  curatk: 10
+  HpUpgradeCount: 1
+  AtkUpgradeCount: 1
   playerState: 

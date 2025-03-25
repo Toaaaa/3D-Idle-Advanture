@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    DataManager dataManager;
     public UIManager uiManager;
     public SceneController sceneController;
     public Player player;
@@ -29,13 +30,15 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            dataManager = GetComponent<DataManager>();
+            uiManager = GetComponent<UIManager>();
+            dataManager.LoadAllData();// 데이터 로드
+            dataManager.DebugData();
         }
         else if(instance != this)
         {
             Destroy(gameObject);
-        }
-
-        uiManager = GetComponent<UIManager>();
+        }       
     }
 
 }

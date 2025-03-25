@@ -8,7 +8,7 @@ public class PlayerData : ScriptableObject
 {
     public int maxHp =100;
     public int curHp =100;
-    [SerializeField] string curatk ="10";
+    public string curatk ="10";
     public BigInteger curAtkValue
     {
         get

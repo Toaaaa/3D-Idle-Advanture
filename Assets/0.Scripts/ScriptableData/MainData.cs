@@ -7,7 +7,7 @@ using System.Numerics;
 public class MainData : ScriptableObject
 {
     public string currentMapName = "";//Forest, Desert 택1
-    [SerializeField] string gold;
+    public string gold;
     public BigInteger goldValue
     {
         get

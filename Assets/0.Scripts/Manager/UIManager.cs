@@ -99,9 +99,13 @@ public class UIManager : MonoBehaviour
     }
     public void ExitGameButton()
     {
-        // 데이터 저장.
-
-        // 게임 종료.
+        StartCoroutine(SaveAndQuit());
+    }
+    IEnumerator SaveAndQuit()
+    {
+        DataManager.Instance.SaveAllData();// 데이터 저장.
+        yield return new WaitForSeconds(0.5f); // 0.5초 대기 (저장 시간 확보)
+        Application.Quit();
     }
 
     // BigInteger 변환
