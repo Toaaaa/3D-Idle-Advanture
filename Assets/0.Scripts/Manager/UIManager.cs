@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdatePotionCount()
     {
-        potionCountText.text = $"{DataManager.Instance.mainData.potionCount.ToString()}";
+        potionCountText.text = $"{DataManager.Instance.inventoryData.GetPotionCount().ToString()}";
     }
     public void ChooseForestMap(GameObject thisobj)
     {

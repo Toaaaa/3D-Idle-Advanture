@@ -20,10 +20,6 @@ public class ShopItemSlot : MonoBehaviour
         {
             DataManager.Instance.mainData.goldValue -= itemData.itemPrice;
             DataManager.Instance.inventoryData.AddItem(itemData, 1);
-            if (itemData.itemType == ItemType.Potion)
-            {
-                DataManager.Instance.mainData.potionCount = DataManager.Instance.inventoryData.GetPotionCount();
-            }
             GameManager.Instance.uiManager.UpdateUIs?.Invoke();// UI 갱신 (골드량)
         }
     }

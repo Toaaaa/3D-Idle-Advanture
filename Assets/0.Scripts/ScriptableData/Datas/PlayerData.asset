@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdea6ce7879ef564c831ab7f6986c3c4, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxHp: 180
-  curHp: 100
+  maxHp: 100
+  curHp: 53
   curatk: 30
   HpUpgradeCount: 9
   AtkUpgradeCount: 5

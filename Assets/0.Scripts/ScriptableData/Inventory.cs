@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Inventory")]
 public class Inventory : ScriptableObject
@@ -45,6 +46,14 @@ public class Inventory : ScriptableObject
             return slot.amount;
         }
         return 0;
+    }
+
+    public void UsePotion(Player p)// 포션 사용시 호출. (GetPotionCount를 선행한뒤 실행.)
+    {
+        var slot = slots.Find(s => s.itemData.itemType == ItemType.Potion);
+        p.Hp += slot.itemData.itemValue;
+        slot.amount--;
+        GameManager.Instance.uiManager.UpdateUIs?.Invoke();
     }
 
     /*

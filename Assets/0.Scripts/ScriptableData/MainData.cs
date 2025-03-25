@@ -24,8 +24,6 @@ public class MainData : ScriptableObject
             gold = value.ToString("0");
         }
     }
-
-    public int potionCount;
     public int stageLevel;
     // 인벤토리 정보
 

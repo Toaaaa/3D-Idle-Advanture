@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: MainData
   m_EditorClassIdentifier: 
   currentMapName: Forest
-  gold: 2010
-  potionCount: 0
+  gold: 710
   stageLevel: 1

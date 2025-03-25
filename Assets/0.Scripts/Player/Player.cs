@@ -47,15 +47,18 @@ public class Player : MonoBehaviour
     [Header("Combat")]
     public Monster targetMonster;// 타겟 몬스터.
 
-    [Header("UI / SFX")]
+    [Header("UI / SFX / Inven")]
     public Image hPBar;// 체력바.
     public TextMeshProUGUI hPText;// 체력 텍스트.
     public GameObject reviveFX;// 부활 이펙트.
     public TextMeshProUGUI damagePrint;// 데미지 출력.
+    [SerializeField] Inventory inven;// 인벤토리.
 
 
     private void Awake()
     {
+        maxHp = DataManager.Instance.playerData.maxHp;
+        hp = DataManager.Instance.playerData.curHp;
         anim = GetComponent<Animator>();
         GameManager.Instance.sceneController.StartMoving += SetMoveState;
         GameManager.Instance.sceneController.StopMoving += SetCombatState;
@@ -64,8 +67,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        maxHp = DataManager.Instance.playerData.maxHp;
-        hp = DataManager.Instance.playerData.curHp;
         atk = DataManager.Instance.playerData.curAtkValue;
         UpdateHP();
         StartCoroutine(StateMachine());// 상태 머신 시작.
@@ -76,6 +77,16 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
             ChangeState(PlayerState.Dead);
+        }
+        if (hp <= 50)
+        {
+            if (inven.GetPotionCount() > 0)// 포션을 가지고 있을경우.
+            {
+                inven.UsePotion(this);
+                if (hp > maxHp)
+                    hp = maxHp;
+                UpdateHP();
+            }
         }
     }
 
@@ -175,7 +186,8 @@ public class Player : MonoBehaviour
 
         while (playerState == PlayerState.Combat)
         {
-            isMoving = false;
+            isMoving = false;           
+
             if(targetMonster != null)
             {
                 if(targetMonster.curHp > 0)// 몬스터가 살아있을때만 공격.
