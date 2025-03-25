@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject playerStatsPanel;
     [SerializeField] GameObject inventoryPanel;
     [SerializeField] GameObject shopPanel;
+    public InventoryUI inventoryUI;
+    public PlayerEquipment playerEquipment;
+
 
     public Action UpdateUIs;
 
@@ -21,7 +24,10 @@ public class UIManager : MonoBehaviour
     {
         UpdateUIs += UpdateGoldDisplay;
         UpdateUIs += UpdatePotionCount;
-        UpdateUIs?.Invoke();
+    }
+    private void Start()
+    {
+        UpdateUIs?.Invoke();// awake 에서 모든 action들을 넣어준 뒤 start에서 Update 실행.
     }
 
     public void ButtonPush(RectTransform buttonrect)

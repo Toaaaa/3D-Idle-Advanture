@@ -8,6 +8,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Inventory")]
 public class Inventory : ScriptableObject
 {
+    public ItemData curEquiped;// 현재 장착중인 아이템.
     public List<InventorySlot> slots = new List<InventorySlot>();// 인벤토리 슬롯.
 
     public void AddItem(ItemData item, int quantity)
@@ -66,6 +67,11 @@ public class InventorySlot
         itemData = _itemData;
         amount = _amount;
     }
+    public InventorySlot()
+    {
+        itemData = null;
+        amount = 0;
+    }
 
     public void AddAmount(int value)
     {
@@ -78,5 +84,13 @@ public class InventorySlot
     public ItemData GetItem()
     {
         return itemData;
+    }
+    public void EquipItem()
+    {
+        //장비 장착.
+    }
+    public void UseItem()
+    {
+        //아이템 사용.
     }
 }

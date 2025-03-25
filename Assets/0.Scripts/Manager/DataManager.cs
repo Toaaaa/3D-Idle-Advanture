@@ -25,6 +25,7 @@ public class DataManager : MonoBehaviour
     // 골드, 스테이지 레벨, 플레이어 정보 연동.
     public MainData mainData;
     public PlayerData playerData;
+    public Inventory inventoryData;
 
     private void Awake()
     {

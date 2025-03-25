@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0533a62a09022d54fafa85cb6b94cc66, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  slots: []
+  curEquiped: {fileID: 11400000, guid: 0ca591f012af5964a82db89ba246165b, type: 2}
+  slots:
+  - itemData: {fileID: 11400000, guid: dce160c182e7e6e4a8caf7e0f6a70a3b, type: 2}
+    amount: 1
