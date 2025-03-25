@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterInChunk: {fileID: 8343628980697417596}
+  ChunkID: 5
 --- !u!65 &8521393289236250154
 BoxCollider:
   m_ObjectHideFlags: 0

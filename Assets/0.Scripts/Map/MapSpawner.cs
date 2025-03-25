@@ -66,6 +66,7 @@ public class MapSpawner : MonoBehaviour
             Debug.LogError("Map data missing");
             return;
         }
+        if (GameManager.Instance.sceneController.chunkQueue.Count >= 2) return;// 청크 큐에 2개 이상이 존재하면 추가 생성하지 않음.
 
         GameObject chunk = chunkList.Find(x => x.activeSelf == false);// 비활성화된 청크를 찾음.
         if(chunk == null)
