@@ -11,8 +11,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private int _verticalSlotCount = 4;      // 슬롯 세로 개수
     [SerializeField] private float _slotMargin = 8f;          // 한 슬롯의 상하좌우 여백
     [SerializeField] private float _contentAreaPadding = 20f; // 인벤토리 영역의 내부 여백
-    [Range(32, 64)]
-    [SerializeField] private float _slotSize = 64f;      // 각 슬롯의 크기
+    [Range(64, 256)]
+    [SerializeField] private float _slotSize = 200f;      // 각 슬롯의 크기
 
     [Header("Connected")]
     [SerializeField] private RectTransform _contentAreaRT; // 슬롯들이 위치할 영역
