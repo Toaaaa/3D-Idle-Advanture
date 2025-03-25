@@ -8,7 +8,6 @@ public class MapChunk : MonoBehaviour
     SceneController sceneController;
     Player player;
     [SerializeField] Monster monsterInChunk;// 해당 청크에 포함된 몬스터.
-    [SerializeField] int ChunkID;
     float moveSpeed = 5;
     Coroutine move;
 
