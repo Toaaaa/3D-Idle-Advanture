@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     {
         maxHp = DataManager.Instance.playerData.maxHp;
         hp = DataManager.Instance.playerData.curHp;
+        atk = DataManager.Instance.playerData.curAtkValue;
         UpdateHP();
         StartCoroutine(StateMachine());// 상태 머신 시작.
     }
