@@ -1,5 +1,5 @@
 ## 📝 게임 소개
-<img src="https://github.com/Toaaaa/3D-Idle-Advanture/blob/f95cbb40c9e77ac6004fa8853463105ac3aa733e/gamepic.PNG?raw=true" width="80">
+<img src="https://github.com/Toaaaa/3D-Idle-Advanture/blob/f95cbb40c9e77ac6004fa8853463105ac3aa733e/gamepic.PNG?raw=true" width="800">
 
 - 프로젝트명 : 끝없는 협곡
 - 게임 컨셉 : 3D 방치형 RPG로, 레퍼런스 게임 "오늘도 우라라" 를 일부 참고함.
